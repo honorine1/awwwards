@@ -65,7 +65,7 @@ def profile(request,profile_id):
 
 
 @login_required(login_url='/accounts/login/')
-def update_profile(request,profile_id):
+def update_profile(request):
 
     current_user=request.user
     if request.method =='POST':
