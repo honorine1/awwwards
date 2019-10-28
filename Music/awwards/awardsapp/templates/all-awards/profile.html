@@ -1,0 +1,104 @@
+{%extends "all-awards/base.html"%}
+
+
+
+{% block content %}
+
+<div class="container">
+  <!-- {% if profile%} -->
+
+  <!-- {%for profile in profile%} -->
+  <div class="row" style="padding:20px">
+
+    <div class="col-md-4">
+      <img class="center-block img-responsive img-circle" src="{{profile.profile_pic.url}}" alt="" style="width:200px; height:250px">
+    </div>
+    <div class="col-md-8">
+      <h1><strong>{{profile.user.username}}</strong></h1>
+
+      <h3>{{profile.bio}}</h3>
+      <h3>{{profile.contact}}</h3>
+      <!-- <h3>number of posts:</h3> -->
+      <a class="btn btn-sm btn-primary" href="{% url 'update_profile' %}"> Update Profile</a>
+     
+
+
+
+
+    </div>
+  </div>
+  <div class="row">
+    <!-- {% if profile%} -->
+
+  {%for proImage in proImages%}
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+    
+        <div class="accordion" id="accordionExample">
+          <div class="card">
+            <div class="card-header" id="headingOne">
+    
+     <h5 class="mb-0">
+    
+        <img src="{{proImage.proImage.url}}">
+                {{proImage.proTitle}}
+    
+              </h5>
+            </div>
+    
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+              <div class="card-body">
+                <img class="center-block img-responsive " src="{profile.projects.proImage.url}}" alt="" style="width:800px; height:400px">
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingTwo">
+              <h5>
+               <p> {% autoescape on %}
+                {{profile.projects.proDesc| safe}}
+                {% endautoescape %} 
+                
+              </p>
+                <small class="text-muted">Posted {{profile.projects.posted_date|timesince}} by {{profile.projects.user.username}}</small><br>
+              
+                    
+                          
+               
+              </h5>
+              
+            </div>
+        
+          </div>
+    
+    
+        </div>
+    
+    
+      </div>
+      {%endfor%}
+     <div class="col-md-2"></div>
+     <!-- {%endif%} -->
+</div>
+    <!-- {% endfor %} -->
+    <!-- {%else%}
+  
+    
+    <div class="card">
+      <div class="card-header">
+       
+      </div>
+      <div class="card-body" styles="width:50px;">
+        
+        <h3 class="card-text">complete your profile</h3>
+        <a class="btn btn-sm btn-primary" href="{% url 'updateProfile' %}"> complete Profile</a>
+      </div>
+    </div>
+  </div>
+
+  {%endif%}
+
+ -->
+
+
+  {%endblock%}
