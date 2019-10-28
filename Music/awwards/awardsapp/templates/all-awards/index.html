@@ -1,0 +1,47 @@
+{% extends 'all-awards/base.html'%}
+
+{% block content%}
+<h1>AWARDS</h1>
+<!-- 
+
+<style>
+  #allimge {
+  
+    border-radius: 50%;
+    margin-left: 10px;
+  }
+</style> -->
+
+
+
+
+<div class="row" style="margin-left:10px;margin-right:10px;">
+    {%for proImage in proImages%}
+    <div class="col-md-4">
+        <div class="card-group" style="background-color:white;">
+            <h5 class="card-title" style="float:left;padding-left:10px;">
+                <p><img class="center-block img-responsive img-circle" src="{{proImage.user.profile.profile_pic.url}}" alt=""
+                    style="width:50px; height:50px"><strong>{{proImage.user.username}}</strong></p>
+            </h5>
+            <div class="card">
+                <img class="card-img-top" src="{{proImage.proImage.url}}" alt="Card image cap" style="width:350px; height:300px;padding-top:20px;padding-left:20px;">
+                <div class="card-body">
+
+                    <p class="card-text" style="padding-left:50px;padding-top:20px;"> <strong>{{proImage.proTitle}}</strong></p>
+                    <p class="card-text" style="padding-left:50px;;"><a href="{{proImage.proLink}}"><em>view Project</em></a></p>
+                    <p class="card-text" style="padding-left:50px;padding-bottom:20px;"><small class="text-muted">Posted
+                            {{proImage.posted_date|timesince}} by {{proImage.user.username}}</small></p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    {% endfor %}
+</div><br>
+
+
+
+
+{% endblock%}
